@@ -5,6 +5,8 @@ from Frontend_fct import *
 
 st.set_page_config(page_title="3) New Prediction")
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 #
 # --- Retrieving data from home page ---
 #
