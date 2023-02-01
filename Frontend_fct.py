@@ -173,7 +173,8 @@ def plot_client(df, explainer, df_reference, index_client=0):
                         0, 40), textcoords='offset points', ha='center', va='bottom', bbox=dict(
                         boxstyle="round", fc="w"), arrowprops=dict(
                         arrowstyle="->"))
-                plt.xlabel('LOAN DEFAULT')
+                legend_handles, _= figInd.get_legend_handles_labels()
+                figInd.legend(legend_handles,['No','Yes'], title="LOAN DEFAULT")
                 st.pyplot(figInd.figure)
                 plt.close()
 
@@ -186,8 +187,8 @@ def plot_client(df, explainer, df_reference, index_client=0):
                     showfliers=False,
                     width=0.2)
                 plt.xlabel('LOAN DEFAULT')
-
-                # Addition of the client data (+ box with client ID):
+                figInd.set_xticklabels(["No", "Yes"])
+                                # Addition of the client data (+ box with client ID):
                 plt.scatter(y=df[features].loc[index_client],
                             x=0.5, marker='o', s=100, color="r")
 
@@ -203,15 +204,9 @@ def plot_client(df, explainer, df_reference, index_client=0):
                 ), zorder=0, linestyle='--', color="#1f77b4")
                 figInd.axhline(y=df_reference[df_reference['TARGET'] == 1][features].mean(
                 ), zorder=0, linestyle='--', color="#ff7f0e")
-                figInd.axhline(
-                    df[features].loc[index_client],
-                    color='red',
-                    zorder=0,
-                    linestyle='--',
-                )
 
                 # Custom legend:
-                colors = ["#1f77b4", "#ff7f0e", "red"]
+                colors = ["#1f77b4", "#ff7f0e"]
                 lines = [
                     Line2D(
                         [0],
@@ -219,8 +214,8 @@ def plot_client(df, explainer, df_reference, index_client=0):
                         color=c,
                         linewidth=1,
                         linestyle='--') for c in colors]
-                labels = ["0", "1", "client"]
-                plt.legend(lines, labels, title="Mean value:")
+                labels = ["No Loan Default", "Loan Default"]
+                plt.legend(lines, labels, title="Mean value of clients:")
                 st.pyplot(figInd.figure)
                 plt.close()
 
@@ -251,7 +246,8 @@ def plot_client(df, explainer, df_reference, index_client=0):
                         0, 40), textcoords='offset points', ha='center', va='bottom', bbox=dict(
                         boxstyle="round", fc="w"), arrowprops=dict(
                         arrowstyle="->"))
-                plt.xlabel('LOAN DEFAULT')
+                legend_handles, _= figInd.get_legend_handles_labels()
+                figInd.legend(legend_handles,['No','Yes'], title="LOAN DEFAULT")
                 st.pyplot(figInd.figure)
                 plt.close()
 
@@ -264,8 +260,8 @@ def plot_client(df, explainer, df_reference, index_client=0):
                     showfliers=False,
                     width=0.2)
                 plt.xlabel('LOAN DEFAULT')
-
-                # Addition of the client data (+ box with client ID):
+                figInd.set_xticklabels(["No", "Yes"])
+                                # Addition of the client data (+ box with client ID):
                 plt.scatter(y=df[features].loc[index_client],
                             x=0.5, marker='o', s=100, color="r")
 
@@ -281,15 +277,9 @@ def plot_client(df, explainer, df_reference, index_client=0):
                 ), zorder=0, linestyle='--', color="#1f77b4")
                 figInd.axhline(y=df_reference[df_reference['TARGET'] == 1][features].mean(
                 ), zorder=0, linestyle='--', color="#ff7f0e")
-                figInd.axhline(
-                    df[features].loc[index_client],
-                    color='red',
-                    zorder=0,
-                    linestyle='--',
-                )
 
                 # Custom legend:
-                colors = ["#1f77b4", "#ff7f0e", "red"]
+                colors = ["#1f77b4", "#ff7f0e"]
                 lines = [
                     Line2D(
                         [0],
@@ -297,8 +287,8 @@ def plot_client(df, explainer, df_reference, index_client=0):
                         color=c,
                         linewidth=1,
                         linestyle='--') for c in colors]
-                labels = ["0", "1", "client"]
-                plt.legend(lines, labels, title="Mean value:")
+                labels = ["No Loan Default", "Loan Default"]
+                plt.legend(lines, labels, title="Mean value of clients:")
                 st.pyplot(figInd.figure)
                 plt.close()
 

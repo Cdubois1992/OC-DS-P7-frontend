@@ -54,12 +54,17 @@ with st.spinner('initialization...'):  # Show loading status
     @st.cache  # caching to improve performance and save outputs
     def loading_data():
         # Loading dataframes
+        url = 'https://drive.google.com/file/d/1RMpmFw4F8sJ2aheTW6j7AsxjXirQCPU-/view?usp=sharing'
+        path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
         df_train = pd.read_csv(
-            "data_model/df_train.csv",
+            path,
             sep=';',
             index_col="SK_ID_CURR")
+
+        url= 'https://drive.google.com/file/d/1dM1nHOZTGnPF5nCAJwOkVJT9X6GwDkO3/view?usp=sharing'
+        path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
         df_new = pd.read_csv(
-            "data_model/df_test.csv",
+            path,
             sep=';',
             index_col="SK_ID_CURR")
         return df_train, df_new
@@ -68,7 +73,7 @@ with st.spinner('initialization...'):  # Show loading status
     df_train, df_new = loading_data()
 
     st.write("2) Loading model")
-    model = "data_model/model.pkl"
+    model = "model.pkl"
     Credit_clf_final = pickle.load(open(model, 'rb'))
 
     st.write("3) Loading Explainer (Shap) ")

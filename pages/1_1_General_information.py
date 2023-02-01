@@ -91,7 +91,8 @@ with tab2:
                 figInd = sns.barplot(df_train[['TARGET', features]].fillna(0).groupby(
                     'TARGET').value_counts(normalize=True).reset_index(), x=features, y=0, hue="TARGET")
                 plt.ylabel('Freq of client')
-                plt.legend(title='LOAN DEFAULT')
+                legend_handles, _= figInd.get_legend_handles_labels()
+                figInd.legend(legend_handles,['No','Yes'], title="LOAN DEFAULT")
                 plt.close()
                 st.pyplot(figInd.figure)
             else:
@@ -101,6 +102,7 @@ with tab2:
                     x='TARGET',
                     showfliers=False)
                 plt.xlabel('LOAN DEFAULT')
+                figInd.set_xticklabels(["No", "Yes"])
                 plt.close()
                 st.pyplot(figInd.figure)
     with colb:
@@ -109,7 +111,8 @@ with tab2:
                 fig = sns.barplot(df_train[['TARGET', features]].fillna(0).groupby(
                     'TARGET').value_counts(normalize=True).reset_index(), x=features, y=0, hue="TARGET")
                 plt.ylabel('Freq of client')
-                plt.legend(title='LOAN DEFAULT')
+                legend_handles, _= figInd.get_legend_handles_labels()
+                figInd.legend(legend_handles,['No','Yes'], title="LOAN DEFAULT")
                 plt.close()
                 st.pyplot(fig.figure)
             else:
@@ -119,6 +122,7 @@ with tab2:
                     x='TARGET',
                     showfliers=False)
                 plt.xlabel('LOAN DEFAULT')
+                figInd.set_xticklabels(["No", "Yes"])
                 plt.close()
                 st.pyplot(fig.figure)
 
