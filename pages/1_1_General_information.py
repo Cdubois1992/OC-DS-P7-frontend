@@ -93,6 +93,7 @@ with tab2:
                 plt.ylabel('Freq of client')
                 legend_handles, _= figInd.get_legend_handles_labels()
                 figInd.legend(legend_handles,['No','Yes'], title="LOAN DEFAULT")
+                figInd.set_xticklabels(["No", "Yes"])
                 plt.close()
                 st.pyplot(figInd.figure)
             else:
@@ -108,15 +109,16 @@ with tab2:
     with colb:
         for features in list(df_train.drop(columns='TARGET').columns)[31:]:
             if df_train[features].nunique() == 2:
-                fig = sns.barplot(df_train[['TARGET', features]].fillna(0).groupby(
+                figInd = sns.barplot(df_train[['TARGET', features]].fillna(0).groupby(
                     'TARGET').value_counts(normalize=True).reset_index(), x=features, y=0, hue="TARGET")
                 plt.ylabel('Freq of client')
+                figInd.set_xticklabels(["No", "Yes"])
                 legend_handles, _= figInd.get_legend_handles_labels()
                 figInd.legend(legend_handles,['No','Yes'], title="LOAN DEFAULT")
                 plt.close()
-                st.pyplot(fig.figure)
+                st.pyplot(figInd.figure)
             else:
-                fig = sns.boxplot(
+                figInd = sns.boxplot(
                     data=df_train,
                     y=features,
                     x='TARGET',
@@ -124,7 +126,7 @@ with tab2:
                 plt.xlabel('LOAN DEFAULT')
                 figInd.set_xticklabels(["No", "Yes"])
                 plt.close()
-                st.pyplot(fig.figure)
+                st.pyplot(figInd.figure)
 
 # --- Tab3 : Presentation of the model ---
 with tab3:
