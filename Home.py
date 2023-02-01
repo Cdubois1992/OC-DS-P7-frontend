@@ -54,19 +54,18 @@ with st.spinner('initialization...'):  # Show loading status
     @st.cache  # caching to improve performance and save outputs
     def loading_data():
         # Loading dataframes
-        url = 'https://drive.google.com/file/d/1RMpmFw4F8sJ2aheTW6j7AsxjXirQCPU-/view?usp=sharing'
-        path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-        df_train = pd.read_csv(
-            path,
+        url = "https://www.dropbox.com/s/4np9xqqh3a2mjsq/df_train.csv.zip?dl=1"
+        df_train = pd.read_csv(url,
+            compression="zip",
             sep=';',
             index_col="SK_ID_CURR")
 
-        url= 'https://drive.google.com/file/d/1dM1nHOZTGnPF5nCAJwOkVJT9X6GwDkO3/view?usp=sharing'
-        path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-        df_new = pd.read_csv(
-            path,
+        url = "https://www.dropbox.com/s/r1p43l7ad230zjg/df_test.csv.zip?dl=1"
+        df_new = pd.read_csv( url,
+            compression="zip",
             sep=';',
             index_col="SK_ID_CURR")
+            
         return df_train, df_new
 
     st.write("1) Loading data")
