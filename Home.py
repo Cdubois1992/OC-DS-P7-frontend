@@ -54,21 +54,25 @@ with st.spinner('initialization...'):  # Show loading status
     @st.cache  # caching to improve performance and save outputs
     def loading_data():
         # Loading dataframes
-        df_train = pd.read_csv(
-            "data_model/df_train.csv",
+        url = "https://www.dropbox.com/s/4np9xqqh3a2mjsq/df_train.csv.zip?dl=1"
+        df_train = pd.read_csv(url,
+            compression="zip",
             sep=';',
             index_col="SK_ID_CURR")
-        df_new = pd.read_csv(
-            "data_model/df_test.csv",
+
+        url = "https://www.dropbox.com/s/r1p43l7ad230zjg/df_test.csv.zip?dl=1"
+        df_new = pd.read_csv( url,
+            compression="zip",
             sep=';',
             index_col="SK_ID_CURR")
+            
         return df_train, df_new
 
     st.write("1) Loading data")
     df_train, df_new = loading_data()
 
     st.write("2) Loading model")
-    model = "data_model/model.pkl"
+    model = "model.pkl"
     Credit_clf_final = pickle.load(open(model, 'rb'))
 
     st.write("3) Loading Explainer (Shap) ")

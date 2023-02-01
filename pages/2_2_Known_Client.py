@@ -36,7 +36,8 @@ index_client = st.sidebar.number_input(
     "Enter Client ID (ex : 100002)",
     format="%d",
     value=100002)
-run_btn = st.sidebar.button('Run', on_click=None, type="primary")
+
+run_btn = st.sidebar.button('See Client Data', on_click=None, type="primary")
 if run_btn:
     if index_client in set(df_train.index):
         execute_noAPI(df_train, index_client, Credit_clf_final)
