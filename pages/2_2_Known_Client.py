@@ -36,6 +36,10 @@ index_client = st.sidebar.number_input(
     "Enter Client ID (ex : 100002)",
     format="%d",
     value=100002)
+
+list_client = list(df_train.index)
+index_client2 = st.sidebar.selectbox("Select Client ID (ex : 100002)",list_client)
+
 run_btn = st.sidebar.button('Run', on_click=None, type="primary")
 if run_btn:
     if index_client in set(df_train.index):
