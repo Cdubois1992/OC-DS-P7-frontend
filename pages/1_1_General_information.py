@@ -148,7 +148,7 @@ with tab3:
     st.subheader("Score obtained by cross-validation")
     st.write(pd.DataFrame({
         'Metrics': ["AUC", "Accuracy", "F1", "Precision", "Recall", "Profit"],
-        'second column': [0.753, 0.881, 0.289, 0.28, 0.299, 496285],
+        'second column': [0.764, 0.869, 0.311, 0.271, 0.366, 1.928],
     }))
 
     # Load Confusion matrix on the test set
